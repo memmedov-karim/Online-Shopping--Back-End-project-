@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <%- include('partials/head.ejs') %>
+  <body class="sub_page">
+    <div class="hero_area">
+      <!-- header section strats -->
+      <%- include('partials/user_header.ejs') %>
+      <!-- end header section -->
+    </div>
+    <!-- inner page section -->
+    <section class="inner_page_head">
+      <div class="container_fuild">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="full">
+              <h3>Product Grid</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end inner page section -->
+    <!-- product section -->
+    <section class="product_section layout_padding">
+      <div class="container">
+        <div class="heading_container heading_center">
+          <h2>Our <span>products</span></h2>
+        </div>
+        <%if(checker){%>
+        <div class="row">
+          <%for(let item of data_product){%>
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="box">
+              <div class="option_container">
+                <div class="options">
+                  <a
+                    href="/user_sign/user_account/addtocart/<%=data2.id%>"
+                    class="option1"
+                    >Add To Cart</a
+                  >
+                  <a
+                    href="/user_sign/user_account/order/<%= data2.id %>/<%= item._id %>"
+                    class="option2"
+                  >
+                    To Order
+                  </a>
+                </div>
+              </div>
+              <div class="img-box">
+                <img src="/<%= item.file %>" alt="" />
+              </div>
+              <div class="detail-box">
+                <h6><%= item.name %></h6>
+                <h6><%= item.price %></h6>
+              </div>
+            </div>
+          </div>
+
+          <%}%>
+          <div class="btn-box">
+            <a href=""> View All products </a>
+          </div>
+        </div>
+        <%}else{%>
+        <div class="row">
+          <h1>There are not product</h1>
+        </div>
+
+        <%}%>
+        
+      </div>
+    </section>
+    <!-- end product section -->
+    <!-- footer section -->
+    <%- include('partials/footer1.ejs',{data:data}) %>
+    <!-- footer section -->
+    <!-- jQery -->
+    <script src="/public/js/jquery-3.4.1.min.js"></script>
+    <!-- popper js -->
+    <script src="/public/js/popper.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="/public/js/bootstrap.js"></script>
+    <!-- custom js -->
+    <script src="/public/js/custom.js"></script>
+    <script>
+      const inp = document.querySelector(".searching");
+      inp.style.display = "none";
+      const btn = document.getElementById("srching");
+      btn.addEventListener("click", (e) => {
+        if (inp.style.display == "none") {
+          inp.style.display = "block";
+        } else {
+          inp.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>

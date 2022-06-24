@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Orders</h1>
+    <%for(let item of data){%>
+
+        <p><strong>Name:</strong><%=item._doc.username%></p>
+        <p><strong>Email:</strong><%=item._doc.email%></p>
+        <p><strong>Number:</strong><%=item._doc.contact_number%></p>
+        <p><strong>Product:</strong><%=item._doc.product%></p>
+        <p><strong>Quantity:</strong><%=item._doc.quantity%></p>
+        <p><strong>Total Price:</strong><%=item._doc.total_price%></p>
+        <p><strong>Message:</strong><%=item._doc.message%></p>
+        <hr>
+
+    <%}%>
+</body>
+</html>

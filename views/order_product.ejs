@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head.ejs') %>
+  <style>
+    body{
+      background-color:darkslategrey !important;
+    }
+    input{
+      width: 250px !important;
+      height: 25px;
+      outline: none;
+      border-radius: 5px !important;
+     
+      
+    }
+    input:hover{
+      box-shadow: 5px 5px 5px rgba(237, 233, 233, 0.2);
+
+    }
+    .product{
+      
+      border-radius: 15px;
+      
+      text-align: center;
+      background-color: bisque;
+    }
+    .product:hover{
+     
+      box-shadow: 15px 15px 15px rgba(237, 233, 233, 0.2);
+    }
+    form{
+      text-align: center;
+    }
+    .bx{
+      margin-left: 40%;
+    }
+    button{
+      height: 30px !important;
+      border-radius: 3px;
+    }
+    button:hover{
+      box-shadow: 5px 5px 5px rgba(237, 233, 233, 0.2);
+
+    }
+  </style>
+  <body>
+    <%- include('partials/user_header.ejs') %>
+    <h1>Order Page</h1>
+    <div class="container">
+      <div class="product">
+        <h1>Detail</h1>
+        <p><strong>Name:</strong><%= data.name %></p>
+        <p><strong>price:</strong><span class="price_of_product"><%= data.price %></span></p>
+        <p><strong>quantity:</strong><span class="qn_of_pr"><%= data.quantity %></span></p>
+      </div>
+      <form action="" method="post">
+        <strong>Contact Number:</strong><br />
+        <input  name="number" type="text" placeholder="number.." /><br /><br />
+        <strong>Quantity:</strong><br />
+        <input name="quantity" class="quantity" type="number" placeholder="quantity.." /><br />
+        <p class="warning"></p>
+        <strong>Message:</strong><br />
+        <input name="message" type="text" placeholder="message.." /><br /><br />
+  
+        <div style="display: flex" class="bx">
+          <button style="height: 20px">Order</button>
+          <h3 style="margin-top: 0; margin-left: 20px">
+            Price:<span class="amount"></span>
+          </h3>
+        </div>
+      </form>
+
+    </div>
+    
+    <script>
+      const warning = document.querySelector(".warning");
+      const qn = document.querySelector(".quantity");
+      const amount = document.querySelector(".amount");
+      const qn_of_pr = document.querySelector(".qn_of_pr");
+      const price_of_product = document.querySelector(".price_of_product");
+      let original_price = "";
+      for(let item of price_of_product.innerText){
+        if(!isNaN(item)){
+            original_price+=item;
+        }
+      }
+      console.log(original_price)
+      const vlofqnofpr = qn_of_pr.innerText;
+      qn.addEventListener("change", () => {
+        console.log(vlofqnofpr, qn.value);
+        console.log(qn);
+        qn_of_pr.innerHTML = vlofqnofpr - qn.value;
+        if (qn.value < 0) {
+          qn.value = 0;
+          qn_of_pr.innerHTML = vlofqnofpr;
+        } else {
+          if (Number(qn_of_pr.innerHTML) <= 0) {
+            warning.innerHTML = "You can't order any more";
+            warning.style.color = "red";
+            qn_of_pr.innerHTML = 0;
+            qn.value = vlofqnofpr;
+          } else {
+            warning.innerHTML = "";
+          }
+          amount.innerHTML = `${qn.value*Number(original_price)} $`;
+        }
+
+        
+      });
+    </script>
+  </body>
+</html>

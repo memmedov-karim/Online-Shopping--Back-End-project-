@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/9060c3d596.js" crossorigin="anonymous"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: darkslategrey;
+        }
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-radius: 7px;
+        text-align: center;
+       
+      }
+      
+      table tr td a {
+        text-decoration: none;
+        color: maroon;
+      }
+      .prodact_data {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid black;
+      }
+      .prodact_data h1{
+        text-align: center;
+      }
+      .prodact_data table {
+        text-align: center;
+      }
+      .edit:hover{
+        cursor: pointer;
+        background-color: red;
+      }
+      
+      .edit a:hover{
+        color: white;
+      }
+      .delete a:hover{
+        color: white;
+      }
+      .back{
+        text-decoration: none;
+        color: black;
+        margin: 10px;
+      }
+      .message{
+        overflow:scroll;
+      }
+      .footer{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        background-image: url('../uploads/anon.webp');
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 187px;
+      }
+      .link{
+        display: flex;
+        justify-content: space-between;
+      }
+      .link form {
+        margin-top: 10px;
+        margin-right: 10px;
+      }
+      .link form input {
+        height: 20px;
+        border: none;
+        outline:none;
+        box-shadow:0 15px 25px rgba(237, 233, 233, 0.2) ;     
+    }
+      .link form button {
+        cursor: pointer;
+      }
+    </style>
+</head>
+<body>
+    <div class="prodact_data">
+        <div class="link">
+            <a class="back" href="/login/admin"><i class="fa-solid fa-angle-left"></i><span>back</span></a>
+            <form action="" method="post">
+                <input placeholder="user email ..." type="text" name="search" >
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+        </div>
+        
+        
+        <h1>User Contact Data</h1>
+        <table>
+          <tr>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Subject</th>
+            <th>Message</th>
+          </tr>
+          <%for(item of user_data){%>
+              <tr>
+                  <td><%= item.fullname %></td>
+                  <td><%= item.email %></td>
+                  <td><%= item.subject %></td>
+                  <td class="message"><%= item.message %></td>
+                  <td class="edit"><a  href="/login/admin/fromuserdata/delete/<%= item.id %>">delete</a></td>
+                  <td class="send" ><a href="/login/admin/fromuserdata/sendmail/<%= item.id %>">Send</a></td>
+                </tr>
+              
+
+            <%}%>
+          
+          
+        </table>
+      </div>
+      <div class="footer">
+        <h1>I Am From Earth</h1>
+
+      </div>
+</body>
+</html>

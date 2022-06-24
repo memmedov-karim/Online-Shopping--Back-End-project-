@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Add Product - Dashboard HTML Template</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family:sans-serif;
+      }
+      .header {
+        padding: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        width: 100%;
+        height: 100px;
+        background-color: black;
+      }
+      .login_sign li {
+        margin-left: 10px;
+      }
+      .login_sign li a {
+        color: white;
+        text-decoration: none;
+      }
+      .login_sign_block {
+        width: 20%;
+        margin-right: 200px;
+      }
+      .login_sign_block .login_sign {
+        display: flex;
+        justify-content: space-evenly;
+        list-style: none;
+      }
+      .content {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        background-color: darkslategray;
+        
+      }
+      .form_block {
+        box-shadow: 0 15px 25px rgba(237, 233, 233, 0.2);
+        border-radius: 5px;
+        backdrop-filter: blur(50px);
+        background-color: rgba(255, 255, 255, 0.2);
+        /* border: 1px solid black; */
+      }
+      .form_block h1 {
+        text-align: center;
+      }
+      .form_block form {
+        text-align: center;
+      }
+      .form_block form button {
+        height: 40px;
+        cursor: pointer;
+        border-radius: 7px;
+
+      }
+      .form_block form button:hover {
+        background-color: rgba(237, 233, 233, 0.2);
+        border-radius: 7px;
+        border: none;
+      }
+      .form_block form p {
+        margin-bottom: 10px;
+        margin-top: 7px;
+      }
+      .form_block form input {
+        height: 25px;
+        outline: none;
+        border: none;
+      }
+      .img {
+        margin-left: 140px;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-radius: 7px;
+        text-align: center;
+       
+      }
+      table tr td a {
+        text-decoration: none;
+        color: maroon;
+      }
+      .prodact_data h1{
+        text-align: center;
+      }
+      .footer{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        background-image: url('../uploads/anon.webp');
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 104px;
+      }
+      
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="name_of_head">
+          <h1>Admin Panel</h1>
+        </div>
+        <div class="login_sign_block">
+          <ul class="login_sign">
+            <li><a href="/login/admin/userorders">UserOrders</a></li>
+            <li><a href="/login/admin/signinguserinfo">UserSigningData</a></li>
+            <li><a href="/login/admin/contactinfo">ContactInfo</a></li>
+            <li><a href="/login/admin/fromuserdata">DataFromUser</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="content">
+        <div class="form_block">
+          <h1>Product Detail</h1>
+          <form action="" method="post" enctype="multipart/form-data">
+            <p>Product Name</p>
+            <input type="text" name="name" placeholder="product name..." />
+            <p>Category of product</p>
+            <input type="text" name="category" placeholder="category name..." />
+            <p>Price of Product</p>
+            <input type="text" name="price" placeholder="price..." />
+            <p>Quantity of Product</p>
+            <input type="number" name="quantity" placeholder="amount..." />
+            <p>Image of Product</p>
+            <input class="img" type="file" name="file" />
+            <button>Add Product</button>
+          </form>
+        </div>
+        <div class="prodact_data">
+          <h1>Data of Product</h1>
+          <table>
+            <tr>
+              <th>category</th>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Image</th>
+            </tr>
+            <%for(let item of data){%>
+                <tr>
+                    <td><%= item.category %></td>
+                    <td><%= item.name %></td>
+                    <td><%= item.price %></td>
+                    <td><%= item.quantity %></td>
+                    <td><img src="/<%= item.file %>" alt="" width="50" height="50"></td>
+                    <td><a href="/login/admin/edit/<%= item.id %>">edit</a></td>
+                    <td><a href="/login/admin/delete/<%= item.id %>">delete</a></td>
+                  </tr>
+                
+
+            <%}%>
+            
+            
+          </table>
+        </div>
+      </div>
+      <div class="footer">
+        <h1>I Am From Earth</h1>
+
+      </div>
+    </div>
+  </body>
+</html>

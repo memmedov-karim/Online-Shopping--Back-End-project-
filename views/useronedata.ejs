@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/9060c3d596.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        body{
+            background-color: cadetblue;
+        }
+        .head{
+            text-align: center;
+        }
+        .cont{
+            padding: 10px;
+            /* border: 1px solid black; */
+            /* width: 400px; */
+            /* height: 450px; */
+            box-shadow: 15px 15px 15px 25px rgba(222, 209, 209, 0.2);
+            background-color: rgba(222, 209, 209, 0.2);
+        }
+        .cont h1{
+            text-align: center;
+        }
+        .back a{
+            color:black;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="back">
+        <a href="/login/admin/fromuserdata">
+          <i class="fa-solid fa-chevron-left"></i><strong><span>back</span></strong>
+        </a>
+      </div>
+    <div class="head">
+        <h1>Thos Page for One User!!</h1>
+    </div>
+    <div class="cont">
+        <h1>Info About <strong><%= useronedata.fullname %></strong></h1>
+        
+
+        <p><strong>Full Name:</strong><%= useronedata.fullname %></p><br>
+        <p><strong>Email:</strong><%= useronedata.email %></p><br>
+        <p><strong>Subject:</strong><%= useronedata.subject %></p><br>
+        <p><strong>Message:</strong><%= useronedata.message %></p>
+
+
+
+    </div>
+</body>
+</html>

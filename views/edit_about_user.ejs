@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head.ejs') %>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .about{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            border: 1px solid black;
+            padding: 10px;
+        }
+        .item{
+            
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+        span{
+            margin-right: 10px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+      input {
+        width: 350px !important;
+        height: 30px !important;
+        outline: none !important;
+        margin-top: 15px !important;
+        border: 0.5px solid maroon !important;
+        border-radius: 5px;
+        
+
+      }
+      button{
+        background-color: rgb(102, 102, 225);
+        color: white;
+        width: 60px;
+        border-radius: 4px;
+      }
+      .edit{
+        height: 30px;
+        margin-top: 199px;
+        margin-left: -57px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <%- include('partials/user_header.ejs') %>
+    <!-- <h3><%= data2.lastname %></h3>
+    <h3><%= data2.firstname %></h3>
+    <h3><%= data2.email %></h3>
+    <h3><%= data2.password %></h3> -->
+    <div class="about">
+        <form method="post" action="">
+            <div class="item">
+                <span><strong>Firstame:</strong></span>
+                <input class="input" value="<%= data2.firstname %>" type="text" name="firstname" />
+            </div>
+            <div class="item">
+                <span><strong>Lastame:</strong></span>
+                <input class="input" value="<%= data2.lastname %>" type="text" name="lastname" />
+            </div>
+            <div class="item">
+                <span><strong>Email:</strong></span>
+                <input class="input" value="<%= data2.email %>" type="email" name="email" />
+            </div>
+            <div class="item">
+                
+                <button class="save">Save</button>
+            </div>
+            
+            
+            
+          </form>
+          
+
+    </div>
+
+    
+
+    <%- include('partials/footer1.ejs',{data:data}) %>
+    
+  </body>
+</html>
